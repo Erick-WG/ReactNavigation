@@ -1,11 +1,12 @@
 // dependency's
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import './App.css';
 
 // components.
-import Home from './Components/Home/Home';
-import Products from './Components/Products/Products';
-import Contact from './Components/Contact/Contact';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import Products from './Pages/Products';
+import Contact from './Pages/Contact';
 import NavigationBar from './Components/Navigation/NavigationBar';
 
 
@@ -19,12 +20,12 @@ function App() {
           </div>
           <div className="main-content">
             {/* content that changes with routes */}
-            <Switch>
-              <Route exact path="/" element={<Home/>} />
-              <Route exact path="/about" element={<Home/>} />
+            <Routes>
+              <Route index exact path="/" element={<Home/>} />
+              <Route exact path="/about" element={<About />} />
               <Route exact path="/products" element={<Products/>} />
               <Route exact path="/contact" element={<Contact/>} />
-            </Switch>
+            </Routes>
           </div>
           <div className="footer">
             <footer>
