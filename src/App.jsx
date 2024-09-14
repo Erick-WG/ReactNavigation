@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// dependency's
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import './App.css';
+
+// components.
+import Home from './Components/Home/Home';
+import Products from './Components/Products/Products';
+import Contact from './Components/Contact/Contact';
+import NavigationBar from './Components/Navigation/NavigationBar';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <>
+        <Router>
+          <div className="navigation">
+            <NavigationBar/>
+          </div>
+          <div className="main-content">
+            {/* content that changes with routes */}
+            <Switch>
+              <Route exact path="/" element={<Home/>} />
+              <Route exact path="/about" element={<Home/>} />
+              <Route exact path="/products" element={<Products/>} />
+              <Route exact path="/contact" element={<Contact/>} />
+            </Switch>
+          </div>
+          <div className="footer">
+            <footer>
+              <div className="logo-container">
+                <h3>footer logo</h3>
+              </div>
+              <div className="footer-links">
+                  <Link to="/">Home</Link>
+                  <Link to="/about">About</Link>
+                  <Link to="/products">Products</Link>
+                  <Link to="/contact">Contact us</Link>
+              </div>
+              <div></div>
+            </footer>
+          </div>
+        </Router>
     </>
   )
 }
